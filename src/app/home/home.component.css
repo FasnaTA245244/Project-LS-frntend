@@ -1,0 +1,125 @@
+.home{
+ background-image:url(../../assets/images/home.jpg);
+ /* background-size: 1200px 650px; */
+background-repeat: no-repeat;
+background-size: cover;
+margin-bottom: 0px;
+padding: 30%;
+/* margin-top: 10px; */
+}
+
+
+h1 {
+    text-align: center;
+    margin-top: -80px;
+    color:rgb(7, 42, 139);
+  }
+
+  /* nav{
+    /* margin-top: 10px; 
+    justify-content: space-between;
+    display: flex;
+    direction: row;
+   
+}
+a{
+    line-height: 100px;
+    text-align: center;
+    text-decoration: none;
+} */
+.contact{
+  color:cornflowerblue ;
+}
+  
+  section {
+    margin-top: 60px;
+  }
+  
+  
+  
+  .buttons {
+    display: right;
+    justify-content: center;
+  }
+  
+  button {
+    padding: 1px 1px;
+    margin: 10px;
+    background-color:white;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  button a {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  button:hover {
+    background-color:white;
+  }
+  
+  button a:hover {
+    color: #fff;
+  }
+  
+
+
+  
+nav {
+ 
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+ 
+}
+
+nav a {
+  color: #050505;
+  text-decoration: none;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+nav a:hover {
+  background-color: transparent;
+  color: #000;
+}
+
+nav a.active {
+  background-color: #444040;
+  color: #f7f3f3;
+}
+
+.contact-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  /* background-color: rgb(172, 159, 147); */
+  /* background-image: url("../../../assets/images/contact2.webp"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.about-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px;
+  /* background-color: rgb(172, 159, 147); */
+   background-color: powderblue; 
+  background-repeat: no-repeat;
+  /* background-size: ; */
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.contact-container{
+  background-color: whitesmoke;
+}

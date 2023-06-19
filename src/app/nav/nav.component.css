@@ -1,0 +1,25 @@
+
+nav {
+    background-color:lightskyblue;
+    padding: 5px;
+    display: flex;
+    justify-content: flex-end;
+   
+  }
+  
+  nav a {
+    color:whitesmoke;
+    text-decoration: none;
+    margin-left: 10px;
+    border-radius: 4px;
+  }
+  
+  nav a:hover {
+    background-color: transparent;
+    color:blue;
+  }
+  
+  nav a.active {
+    background-color: #444040;
+    color: #f7f3f3;
+  }
