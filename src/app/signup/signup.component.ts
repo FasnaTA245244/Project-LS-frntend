@@ -92,9 +92,13 @@ export class SignupComponent implements OnInit {
   // Inside your LoginComponent class
 showPassword: boolean = false;
 
+
 togglePasswordVisibility() {
   this.showPassword = !this.showPassword;
+  
 }
+
+
 
 
   constructor(private routerService: RouterServiceService, private authenticateService: AuthServiceService, public formBuilder: FormBuilder) {
