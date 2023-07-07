@@ -6,16 +6,7 @@
             <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
               <br>
 
-              <!-- Login As dropdown -->
-              <div class="form-group">
-                <label class="form-label" for="type">Login As:</label>
-                <select id="type" class="form-select" formControlName="type">
-                  <option value="" disabled selected>Select an option</option>
-                  <option value="user">User</option>
-                  <option value="admin">Admin</option>
-                </select>
-              </div>
-
+            
               <!-- Username input -->
                <div class="form-group">
                 <label class="form-label" for="username">Username:</label>
@@ -27,8 +18,8 @@
                <div class="form-group">
                 <label class="form-label" for="password">Password</label>
                 <div class="input-group">
-                  <input type="{{ showPassword ? 'text' : 'password' }}" id="password" class="form-control" placeholder="Enter your password" formControlName="password" />
-                  <i class="fa fa-eye" [ngClass]="{ 'fa-eye-slash': !showPassword }" (click)="togglePasswordVisibility()"></i>
+                  <input type="{{ showuserPassword ? 'text' : 'password' }}" id="password" class="form-control" placeholder="Enter your password" formControlName="userPassword" />
+                  <i class="fa fa-eye" [ngClass]="{ 'fa-eye-slash': !showuserPassword }" (click)="togglePasswordVisibility()"></i>
                   </div>
               </div> 
               

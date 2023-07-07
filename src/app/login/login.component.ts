@@ -5,6 +5,9 @@ import { Login } from '../modal/login';
 import { AuthServiceService } from '../service/auth-service.service';
 import { RouterServiceService } from '../service/router-service.service';
 
+import { UserAuthService } from '../services/user-auth.service';
+import { UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,69 +18,62 @@ export class LoginComponent implements OnInit{
   loginForm: FormGroup;
   submitMessage!: string;
   flag: boolean = false;
+  username: string|undefined;
+  userPassword:string='';
 
-  showPassword: boolean = false;
+  showuserPassword: boolean = false;
 
 togglePasswordVisibility() {
-  this.showPassword = !this.showPassword;
+  this.showuserPassword = !this.showuserPassword;
 }
 
-  constructor(private routerService: RouterServiceService, private authservice: AuthServiceService) {
+  constructor(private routerService: RouterServiceService, private authservice: AuthServiceService,
+    private userService: UserService, private userAuthService: UserAuthService, private router: Router
+    ) {
     this.loginForm = new FormGroup({
       username: new FormControl(),
-      password: new FormControl(),
-      type: new FormControl()
+      userPassword: new FormControl(),
+      //type: new FormControl()
     });
   }
 
   ngOnInit(): void {
-    if (sessionStorage.getItem('key') != null) {
-      this.routerService.tohome();
-    }
+    // if (sessionStorage.getItem('key') != null) {
+    //   this.routerService.tohome();
+    // }
   }
 
   onSubmit() {
+
     console.log("hi from loginsubmit");
-    // if (this.loginForm.valid){
+  //   // if (this.loginForm.valid){
     this.login.username = this.loginForm.value.username;
-    this.login.password = this.loginForm.value.password;
-    this.login.type = this.loginForm.value.type;
+   this.login.userPassword = this.loginForm.value.userPassword;
 
-    this.submitMessage = this.loginForm.value.username;
+    this.userService.login(this.loginForm.value).subscribe(
+      (response: any) => {
+        this.userAuthService.setRoles(response.user.role);
+        this.userAuthService.setToken(response.jwtToken);
+        const role = response.user.role[0].roleName;
+        //console.log(response);
+        alert("Login Successful " + this.login.username);
 
-    console.log("Login Submit: " + this.login.username);
-    
-    
+        if (role === 'Admin') 
+        {
+          this.router.navigate(['/homeadmin']);
+        } else 
+        {
+          this.router.navigate(['/homeuser']);
+        }
+      },
 
-    this.authservice.getusers(this.login).subscribe((data) => {
-      this.authservice.setBearerToken(data['token']);
-      console.log(data);
-      alert("Login Successful " + this.login.username); 
-     
-
-      if (data != null) {
-        sessionStorage.setItem("key", this.submitMessage);
-        this.flag = true;
-
-        if (this.login.type == 'user') {
-          console.log("user");
-          this.routerService.touser();
-        } else if (this.login.type == 'admin') {
-          console.log("admin");
-          this.routerService.toadmin();
-        } 
+      (error) => 
+      {
+        console.log(error);
+        alert('You have entered incorrect Username or Password!');
+        this.submitMessage = "Incorrect Username or Password";
       }
-    },
-    error => {
-      console.log("error");
-      alert('You have entered incorrect Username or Password!');
-    });
+    );
   }
-  //   else {
-  //     alert("Please fill in all fields.");
-  //   }
-  // }
 
- 
- 
   }
